@@ -102,6 +102,55 @@ function formatTime(seconds){
 
 }
 // ======================
+// ÁLLAPOT MENTÉSE
+// ======================
+
+function saveState(){
+
+    localStorage.setItem(
+        "breadState",
+        JSON.stringify(breads)
+    );
+
+}
+
+
+// ======================
+// ÁLLAPOT BETÖLTÉSE
+// ======================
+
+function loadState(){
+
+    const saved =
+        localStorage.getItem(
+            "breadState"
+        );
+
+    if(!saved){
+        return;
+    }
+
+    const loadedBreads =
+        JSON.parse(saved);
+
+    breads.forEach((bread, index) => {
+
+        bread.currentStep =
+            loadedBreads[index].currentStep;
+
+        bread.remainingSeconds =
+            loadedBreads[index].remainingSeconds;
+
+        bread.started =
+            loadedBreads[index].started;
+
+        bread.completed =
+            loadedBreads[index].completed;
+
+    });
+
+}
+// ======================
 // ELŐREHALADÁS
 // ======================
 
@@ -582,9 +631,10 @@ document
                 bread.remainingSeconds =
                     workflow[0].duration * 60;
 
-                updateNextTask();
+saveState();
 
-                refreshCards();
+updateNextTask();
+refreshCards();
 
             }
         );
