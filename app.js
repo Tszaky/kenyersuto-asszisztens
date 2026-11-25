@@ -37,16 +37,6 @@ const workflow = [
     },
 
     {
-        name: "Sütő előkészítés",
-        duration: 5
-    },
-
-    {
-        name: "Fazékba helyezés",
-        duration: 1
-    },
-
-    {
         name: "Sütés fedett fazékban",
         duration: 45
     },
