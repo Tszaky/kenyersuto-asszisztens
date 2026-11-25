@@ -162,64 +162,6 @@
                     alt="Kenyér #3">
 
             </div>
-if(workflowContainer){
-
-    workflowContainer.innerHTML = "";
-
-    if(!bread.started){
-
-        workflowContainer.innerHTML =
-            "<div>⚪ Még nem indult</div>";
-
-        return;
-    }
-
-    workflow.forEach((step, stepIndex) => {
-
-        const item =
-            document.createElement("div");
-
-        if(stepIndex < bread.currentStep){
-
-            item.textContent =
-                "✅ " + step.name;
-
-            item.className = "done";
-
-        }
-        else if(
-            stepIndex === bread.currentStep
-        ){
-
-            item.textContent =
-                "⏳ " + step.name;
-
-            item.className = "current";
-
-        }
-        else{
-
-            item.textContent =
-                "⚪ " + step.name;
-
-        }
-
-        workflowContainer.appendChild(item);
-
-    });
-
-}
-            <div class="process-title">
-                Még nem indult
-            </div>
-
-            <div class="remaining-time">
-                ⏳ Várakozás
-            </div>
-
-            <button class="start-btn">
-                ▶ START
-            </button>
 
         </article>
 
