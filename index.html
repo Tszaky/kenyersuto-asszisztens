@@ -79,13 +79,13 @@
 
             <div class="workflow">
 
-                <div class="done">✅ Pihentetés 1</div>
-                <div class="done">✅ Hajtogatás 1 + Pihentetés 2</div>
-                <div class="done">✅ Hajtogatás 2 + Pihentetés 3</div>
-                <div class="done">✅ Hajtogatás 3 + Formázás + Kelesztés</div>
-                <div class="done">✅ Sütés fedett fazékban</div>
-                <div class="current">⏳ Kivétel fazékból + Sütés rácson</div>
-                <div>⚪ Kész</div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="current"></div>
+                <div></div>
 
             </div>
 
@@ -130,13 +130,13 @@
 
             <div class="workflow">
 
-                <div class="done">✅ Pihentetés 1</div>
-                <div class="current">⏳ Hajtogatás 1 + Pihentetés 2</div>
-                <div>⚪ Hajtogatás 2 + Pihentetés 3</div>
-                <div>⚪ Hajtogatás 3 + Formázás + Kelesztés</div>
-                <div>⚪ Sütés fedett fazékban</div>
-                <div>⚪ Kivétel fazékból + Sütés rácson</div>
-                <div>⚪ Kész</div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="done"></div>
+                <div class="current"></div>
+                <div></div>
 
             </div>
 
@@ -172,7 +172,53 @@
                     alt="Kenyér #3">
 
             </div>
+if(workflowContainer){
 
+    workflowContainer.innerHTML = "";
+
+    if(!bread.started){
+
+        workflowContainer.innerHTML =
+            "<div>⚪ Még nem indult</div>";
+
+        return;
+    }
+
+    workflow.forEach((step, stepIndex) => {
+
+        const item =
+            document.createElement("div");
+
+        if(stepIndex < bread.currentStep){
+
+            item.textContent =
+                "✅ " + step.name;
+
+            item.className = "done";
+
+        }
+        else if(
+            stepIndex === bread.currentStep
+        ){
+
+            item.textContent =
+                "⏳ " + step.name;
+
+            item.className = "current";
+
+        }
+        else{
+
+            item.textContent =
+                "⚪ " + step.name;
+
+        }
+
+        workflowContainer.appendChild(item);
+
+    });
+
+}
             <div class="process-title">
                 Még nem indult
             </div>
