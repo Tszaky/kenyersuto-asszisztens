@@ -245,7 +245,83 @@ function updateNextTask(){
     }
 
 }
+// ======================
+// KÁRTYÁK FRISSÍTÉSE
+// ======================
 
+function refreshCards(){
+
+    breads.forEach((bread, index) => {
+
+        const card =
+            document.getElementById(
+                `bread${bread.id}`
+            );
+
+        if(!card){
+            return;
+        }
+
+        const processTitle =
+            card.querySelector(
+                ".process-title"
+            );
+
+        const remainingTime =
+            card.querySelector(
+                ".remaining-time"
+            );
+
+        const finishTime =
+            card.querySelector(
+                ".finish-time"
+            );
+
+        const progressBar =
+            card.querySelector(
+                ".progress-bar"
+            );
+
+        if(processTitle){
+
+            processTitle.textContent =
+                workflow[
+                    bread.currentStep
+                ].name;
+
+        }
+
+        if(remainingTime){
+
+            remainingTime.textContent =
+                "⏳ " +
+                formatTime(
+                    bread.remainingSeconds
+                );
+
+        }
+
+        if(finishTime){
+
+            finishTime.textContent =
+                "🏁 " +
+                getTotalRemainingMinutes(
+                    bread
+                ) +
+                " perc";
+
+        }
+
+        if(progressBar){
+
+            progressBar.style.width =
+                getProgress(bread) + "%";
+
+        }
+
+    });
+
+}
 // ======================
 // VISSZASZÁMLÁLÓ
 // ======================
@@ -255,6 +331,8 @@ setInterval(() => {
     breads.forEach(bread => {
 
         if(
+            bread.started &&
+            !bread.completed &&
             bread.remainingSeconds > 0
         ){
 
@@ -265,6 +343,8 @@ setInterval(() => {
     });
 
     updateNextTask();
+
+    refreshCards();
 
 }, 1000);
 
@@ -288,7 +368,8 @@ if(completeBtn){
             advanceBread(nextBread);
 
             updateNextTask();
-
+            
+            refreshCards();
         }
     );
 
@@ -347,3 +428,4 @@ setInterval(
 // ======================
 
 updateNextTask();
+refreshCards();
