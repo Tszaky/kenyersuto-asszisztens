@@ -466,9 +466,6 @@ setInterval(() => {
 // ======================
 // KÉSZ GOMB
 // ======================
-// ======================
-// KÉSZ GOMB
-// ======================
 
 const completeBtn =
     document.getElementById(
@@ -595,3 +592,4 @@ document
 console.log(
     document.querySelectorAll(".start-btn")
 );
+alert("APP.JS VERZIÓ TESZT");
