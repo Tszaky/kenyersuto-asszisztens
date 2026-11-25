@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenyérsütő Asszisztens</title>
+
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- KÖVETKEZŐ TEENDŐ -->
+
+    <section class="next-task card">
+
+        <h1>🔔 Következő teendő</h1>
+
+        <div class="next-bread">
+            🍞 Kenyér #2
+        </div>
+
+        <div class="next-process">
+            Hajtogatás 1 + Pihentetés 2
+        </div>
+
+        <div class="countdown" id="mainCountdown">
+            00:02:17
+        </div>
+
+        <button id="completeTaskBtn">
+            ✅ Kész
+        </button>
+
+    </section>
+
+
+    <!-- FELSŐ SOR -->
+
+    <section class="bread-grid">
+
+        <!-- Kenyér #1 -->
+
+        <article class="bread-card active-bread" id="bread1">
+
+            <div class="bread-header">
+
+                <h2>🍞 Kenyér #1</h2>
+
+                <div class="finish-time">
+                    🏁 00:12
+                </div>
+
+            </div>
+
+            <div class="image-wrapper">
+
+                <img
+                    id="bread1Image"
+                    class="bread-image"
+                    src="images/Hajtogatas_1.png"
+                    alt="Kenyér #1">
+
+            </div>
+
+            <div class="process-title">
+                Kivétel fazékból + Sütés rácson
+            </div>
+
+            <div class="remaining-time">
+                ⏳ 8 perc
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" style="width:90%"></div>
+            </div>
+
+            <div class="workflow">
+
+                <div class="done">✅ Pihentetés 1</div>
+                <div class="done">✅ Hajtogatás 1 + Pihentetés 2</div>
+                <div class="done">✅ Hajtogatás 2 + Pihentetés 3</div>
+                <div class="done">✅ Hajtogatás 3 + Formázás + Kelesztés</div>
+                <div class="done">✅ Sütés fedett fazékban</div>
+                <div class="current">⏳ Kivétel fazékból + Sütés rácson</div>
+                <div>⚪ Kész</div>
+
+            </div>
+
+        </article>
+
+
+        <!-- Kenyér #2 -->
+
+        <article class="bread-card" id="bread2">
+
+            <div class="bread-header">
+
+                <h2>🍞 Kenyér #2</h2>
+
+                <div class="finish-time">
+                    🏁 01:24
+                </div>
+
+            </div>
+
+            <div class="image-wrapper">
+
+                <img
+                    id="bread2Image"
+                    class="bread-image"
+                    src="images/Hajtogatas_4.png"
+                    alt="Kenyér #2">
+
+            </div>
+
+            <div class="process-title">
+                Hajtogatás 1 + Pihentetés 2
+            </div>
+
+            <div class="remaining-time">
+                ⏳ 2 perc
+            </div>
+
+            <div class="progress">
+                <div class="progress-bar" style="width:35%"></div>
+            </div>
+
+            <div class="workflow">
+
+                <div class="done">✅ Pihentetés 1</div>
+                <div class="current">⏳ Hajtogatás 1 + Pihentetés 2</div>
+                <div>⚪ Hajtogatás 2 + Pihentetés 3</div>
+                <div>⚪ Hajtogatás 3 + Formázás + Kelesztés</div>
+                <div>⚪ Sütő előkészítés</div>
+                <div>⚪ Fazékba helyezés</div>
+                <div>⚪ Sütés fedett fazékban</div>
+                <div>⚪ Kivétel fazékból + Sütés rácson</div>
+                <div>⚪ Kész</div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ALSÓ SOR -->
+
+    <section class="bottom-grid">
+
+        <!-- Kenyér #3 -->
+
+        <article class="bread-card waiting-card" id="bread3">
+
+            <div class="bread-header">
+
+                <h2>🍞 Kenyér #3</h2>
+
+                <div class="finish-time">
+                    🏁 --:--
+                </div>
+
+            </div>
+
+            <div class="image-wrapper">
+
+                <img
+                    id="bread3Image"
+                    class="bread-image"
+                    src="images/Hajtogatas_7.png"
+                    alt="Kenyér #3">
+
+            </div>
+
+            <div class="process-title">
+                Még nem indult
+            </div>
+
+            <div class="remaining-time">
+                ⏳ Várakozás
+            </div>
+
+            <button class="start-btn">
+                ▶ START
+            </button>
+
+        </article>
+
+
+        <!-- SÜTŐ PANEL -->
+
+        <article class="oven-panel card">
+
+            <h2>🔥 Sütő</h2>
+
+            <div class="oven-row">
+                <strong>Állapot:</strong>
+                Foglalt
+            </div>
+
+            <div class="oven-row">
+                <strong>Jelenleg:</strong>
+                Kenyér #1
+            </div>
+
+            <div class="oven-row">
+                <strong>Folyamat:</strong>
+                Kivétel fazékból + Sütés rácson
+            </div>
+
+            <div class="oven-row">
+                <strong>Hátralévő idő:</strong>
+                8 perc
+            </div>
+
+            <hr>
+
+            <div class="oven-row">
+                <strong>Következő:</strong>
+                Kenyér #2
+            </div>
+
+            <div class="oven-row">
+                <strong>Várható betolás:</strong>
+                11:26
+            </div>
+
+        </article>
+
+    </section>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
