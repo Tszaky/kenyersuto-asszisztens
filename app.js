@@ -581,17 +581,12 @@ document
             "click",
             () => {
 
-                alert("START!");
-alert(
-    JSON.stringify(breads)
-);
                 const bread =
                     breads.find(
                         b => !b.started
                     );
 
                 if(!bread){
-                    alert("Nincs elindítható kenyér");
                     return;
                 }
 
@@ -613,4 +608,3 @@ alert(
 console.log(
     document.querySelectorAll(".start-btn")
 );
-alert("APP.JS VERZIÓ TESZT");
