@@ -555,7 +555,7 @@ document
         button.addEventListener(
             "click",
             () => {
-
+        alert("START megnyomva");
                 const bread =
                     breads.find(
                         b => !b.started
