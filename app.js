@@ -583,4 +583,6 @@ document
         );
 
     });
-
+console.log(
+    document.querySelectorAll(".start-btn")
+);
