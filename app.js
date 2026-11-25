@@ -282,42 +282,62 @@ function refreshCards(){
                 ".progress-bar"
             );
 
-        if(processTitle){
+if(processTitle){
 
-            processTitle.textContent =
-                workflow[
-                    bread.currentStep
-                ].name;
+    if(!bread.started){
 
-        }
+        processTitle.textContent =
+            "Még nem indult";
 
-        if(remainingTime){
+    } else {
 
-            remainingTime.textContent =
-                "⏳ " +
-                formatTime(
-                    bread.remainingSeconds
-                );
+        processTitle.textContent =
+            workflow[
+                bread.currentStep
+            ].name;
 
-        }
+    }
 
-        if(finishTime){
+}
 
-            finishTime.textContent =
-                "🏁 " +
-                getTotalRemainingMinutes(
-                    bread
-                ) +
-                " perc";
+if(remainingTime){
 
-        }
+    if(!bread.started){
 
-        if(progressBar){
+        remainingTime.textContent =
+            "";
 
-            progressBar.style.width =
-                getProgress(bread) + "%";
+    } else {
 
-        }
+        remainingTime.textContent =
+            "⏳ " +
+            formatTime(
+                bread.remainingSeconds
+            );
+
+    }
+
+}
+
+if(finishTime){
+
+    if(!bread.started){
+
+        finishTime.textContent =
+            "🏁 --:--";
+
+    } else {
+
+        finishTime.textContent =
+            "🏁 " +
+            getTotalRemainingMinutes(
+                bread
+            ) +
+            " perc";
+
+    }
+
+}
 
     });
 
