@@ -286,26 +286,10 @@ function refreshCards(){
             card.querySelector(
                 ".workflow"
             );
-        if(startButton){
-
-            if(bread.started){
-
-                startButton.style.display =
-                    "none";
-
-            }
-            else{
-
-                startButton.style.display =
-                    "inline-block";
-
-            }
-
-        }
-
-    });
-
-}
+        const startButton =
+            card.querySelector(
+                ".start-btn"
+            );
 
         // Folyamat neve
 
