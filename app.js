@@ -440,22 +440,7 @@ function refreshCards(){
     });
 
 }
-if(startButton){
 
-    if(bread.started){
-
-        startButton.style.display =
-            "none";
-
-    }
-    else{
-
-        startButton.style.display =
-            "inline-block";
-
-    }
-
-}
 // ======================
 // VISSZASZÁMLÁLÓ
 // ======================
