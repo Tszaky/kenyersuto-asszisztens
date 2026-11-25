@@ -555,13 +555,16 @@ document
         button.addEventListener(
             "click",
             () => {
-        alert("START megnyomva");
+
+                alert("START!");
+
                 const bread =
                     breads.find(
                         b => !b.started
                     );
 
                 if(!bread){
+                    alert("Nincs elindítható kenyér");
                     return;
                 }
 
@@ -580,3 +583,4 @@ document
         );
 
     });
+
