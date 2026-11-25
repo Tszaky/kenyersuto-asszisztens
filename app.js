@@ -251,7 +251,7 @@ function updateNextTask(){
 
 function refreshCards(){
 
-    breads.forEach((bread, index) => {
+    breads.forEach((bread) => {
 
         const card =
             document.getElementById(
@@ -282,62 +282,157 @@ function refreshCards(){
                 ".progress-bar"
             );
 
-if(processTitle){
-
-    if(!bread.started){
-
-        processTitle.textContent =
-            "Még nem indult";
-
-    } else {
-
-        processTitle.textContent =
-            workflow[
-                bread.currentStep
-            ].name;
-
-    }
-
-}
-
-if(remainingTime){
-
-    if(!bread.started){
-
-        remainingTime.textContent =
-            "";
-
-    } else {
-
-        remainingTime.textContent =
-            "⏳ " +
-            formatTime(
-                bread.remainingSeconds
+        const workflowContainer =
+            card.querySelector(
+                ".workflow"
             );
 
-    }
 
-}
+        // Folyamat neve
 
-if(finishTime){
+        if(processTitle){
 
-    if(!bread.started){
+            if(!bread.started){
 
-        finishTime.textContent =
-            "🏁 --:--";
+                processTitle.textContent =
+                    "Még nem indult";
 
-    } else {
+            }
+            else{
 
-        finishTime.textContent =
-            "🏁 " +
-            getTotalRemainingMinutes(
-                bread
-            ) +
-            " perc";
+                processTitle.textContent =
+                    workflow[
+                        bread.currentStep
+                    ].name;
 
-    }
+            }
 
-}
+        }
+
+
+        // Hátralévő idő
+
+        if(remainingTime){
+
+            if(!bread.started){
+
+                remainingTime.textContent = "";
+
+            }
+            else{
+
+                remainingTime.textContent =
+                    "⏳ " +
+                    formatTime(
+                        bread.remainingSeconds
+                    );
+
+            }
+
+        }
+
+
+        // Teljes hátralévő idő
+
+        if(finishTime){
+
+            if(!bread.started){
+
+                finishTime.textContent =
+                    "🏁 --:--";
+
+            }
+            else{
+
+                finishTime.textContent =
+                    "🏁 " +
+                    getTotalRemainingMinutes(
+                        bread
+                    ) +
+                    " perc";
+
+            }
+
+        }
+
+
+        // Progress bar
+
+        if(progressBar){
+
+            progressBar.style.width =
+                getProgress(bread) + "%";
+
+        }
+
+
+        // Workflow lista
+
+        if(workflowContainer){
+
+            workflowContainer.innerHTML = "";
+
+            if(!bread.started){
+
+                workflowContainer.innerHTML =
+                    "<div>⚪ Még nem indult</div>";
+
+            }
+            else{
+
+                workflow.forEach(
+                    (step, stepIndex) => {
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+                        if(
+                            stepIndex <
+                            bread.currentStep
+                        ){
+
+                            item.textContent =
+                                "✅ " +
+                                step.name;
+
+                            item.className =
+                                "done";
+
+                        }
+                        else if(
+                            stepIndex ===
+                            bread.currentStep
+                        ){
+
+                            item.textContent =
+                                "⏳ " +
+                                step.name;
+
+                            item.className =
+                                "current";
+
+                        }
+                        else{
+
+                            item.textContent =
+                                "⚪ " +
+                                step.name;
+
+                        }
+
+                        workflowContainer
+                            .appendChild(
+                                item
+                            );
+
+                    }
+                );
+
+            }
+
+        }
 
     });
 
