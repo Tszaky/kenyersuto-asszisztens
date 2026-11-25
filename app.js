@@ -510,6 +510,8 @@ setInterval(() => {
 
     });
 
+    saveState();
+
     updateNextTask();
 
     refreshCards();
@@ -600,6 +602,7 @@ setInterval(
 // ======================
 // INDULÁS
 // ======================
+loadState();
 
 updateNextTask();
 refreshCards();
