@@ -466,6 +466,14 @@ setInterval(() => {
 // ======================
 // KÉSZ GOMB
 // ======================
+// ======================
+// KÉSZ GOMB
+// ======================
+
+const completeBtn =
+    document.getElementById(
+        "completeTaskBtn"
+    );
 
 if(completeBtn){
 
@@ -483,8 +491,9 @@ if(completeBtn){
             advanceBread(nextBread);
 
             updateNextTask();
-            
+
             refreshCards();
+
         }
     );
 
