@@ -563,7 +563,9 @@ document
             () => {
 
                 alert("START!");
-
+alert(
+    JSON.stringify(breads)
+);
                 const bread =
                     breads.find(
                         b => !b.started
