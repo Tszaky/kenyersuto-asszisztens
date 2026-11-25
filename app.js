@@ -4,9 +4,9 @@
 // ======================
 
 const slideshowImages = [
-    "images/Hajtogatas_1.png",
-    "images/Hajtogatas_4.png",
-    "images/Hajtogatas_7.png"
+    "Hajtogatas_1.png",
+    "Hajtogatas_4.png",
+    "Hajtogatas_7.png"
 ];
 
 // ======================
