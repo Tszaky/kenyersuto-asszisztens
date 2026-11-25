@@ -537,7 +537,42 @@ setInterval(
     rotateSlides,
     4000
 );
+// ======================
+// START GOMBOK
+// ======================
 
+document
+    .querySelectorAll(".start-btn")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const bread =
+                    breads.find(
+                        b => !b.started
+                    );
+
+                if(!bread){
+                    return;
+                }
+
+                bread.started = true;
+
+                bread.currentStep = 0;
+
+                bread.remainingSeconds =
+                    workflow[0].duration * 60;
+
+                updateNextTask();
+
+                refreshCards();
+
+            }
+        );
+
+    });
 // ======================
 // INDULÁS
 // ======================
