@@ -148,7 +148,7 @@ function loadState(){
             loadedBreads[index].completed;
 
     });
-
+console.log("BETÖLTVE", breads);
 }
 // ======================
 // ELŐREHALADÁS
