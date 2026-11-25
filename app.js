@@ -286,7 +286,10 @@ function refreshCards(){
             card.querySelector(
                 ".workflow"
             );
-
+        const startButton =
+            card.querySelector(
+                ".start-btn"
+            );
 
         // Folyamat neve
 
@@ -435,6 +438,22 @@ function refreshCards(){
         }
 
     });
+
+}
+if(startButton){
+
+    if(bread.started){
+
+        startButton.style.display =
+            "none";
+
+    }
+    else{
+
+        startButton.style.display =
+            "inline-block";
+
+    }
 
 }
 // ======================
