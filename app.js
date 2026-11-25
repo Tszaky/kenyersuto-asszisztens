@@ -537,6 +537,13 @@ setInterval(
     rotateSlides,
     4000
 );
+
+// ======================
+// INDULÁS
+// ======================
+
+updateNextTask();
+refreshCards();
 // ======================
 // START GOMBOK
 // ======================
@@ -573,9 +580,3 @@ document
         );
 
     });
-// ======================
-// INDULÁS
-// ======================
-
-updateNextTask();
-refreshCards();
