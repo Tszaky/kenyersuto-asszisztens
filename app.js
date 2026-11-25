@@ -58,26 +58,31 @@ const workflow = [
 // ======================
 
 const breads = [
-
     {
         id: 1,
         name: "Kenyér #1",
-        currentStep: 7,
-        remainingSeconds: 8 * 60
+        currentStep: 5,
+        remainingSeconds: 480,
+        started: true,
+        completed: false
     },
 
     {
         id: 2,
         name: "Kenyér #2",
         currentStep: 1,
-        remainingSeconds: 2 * 60
+        remainingSeconds: 120,
+        started: true,
+        completed: false
     },
 
     {
         id: 3,
         name: "Kenyér #3",
         currentStep: 0,
-        remainingSeconds: 0
+        remainingSeconds: 0,
+        started: false,
+        completed: false
     }
 
 ];
@@ -96,16 +101,31 @@ function formatTime(seconds){
         + String(secs).padStart(2, "0");
 
 }
+// ======================
+// ELŐREHALADÁS
+// ======================
 
+function getProgress(bread){
+
+    const totalSteps =
+        workflow.length - 1;
+
+    return Math.round(
+        (bread.currentStep / totalSteps)
+        * 100
+    );
+
+}
 // ======================
 // TELJES HÁTRALÉVŐ IDŐ
 // ======================
 
 function getTotalRemainingMinutes(bread){
 
-    let total = Math.ceil(
-        bread.remainingSeconds / 60
-    );
+    let total =
+        Math.ceil(
+            bread.remainingSeconds / 60
+        );
 
     for(
         let i = bread.currentStep + 1;
@@ -116,6 +136,54 @@ function getTotalRemainingMinutes(bread){
     }
 
     return total;
+
+}
+// ======================
+// MUNKAFOLYAMAT VEZÉRLÉS
+// ======================
+
+function getNextBread(){
+
+    const active =
+        breads.filter(
+            bread =>
+                bread.started &&
+                !bread.completed
+        );
+
+    active.sort(
+        (a,b) =>
+            a.remainingSeconds -
+            b.remainingSeconds
+    );
+
+    return active[0];
+
+}
+
+
+function advanceBread(bread){
+
+    bread.currentStep++;
+
+    if(
+        bread.currentStep >= workflow.length
+    ){
+
+        bread.currentStep =
+            workflow.length - 1;
+
+        bread.completed = true;
+
+        bread.remainingSeconds = 0;
+
+        return;
+    }
+
+    bread.remainingSeconds =
+        workflow[
+            bread.currentStep
+        ].duration * 60;
 
 }
 
@@ -204,68 +272,22 @@ setInterval(() => {
 // KÉSZ GOMB
 // ======================
 
-const completeBtn =
-    document.getElementById(
-        "completeTaskBtn"
-    );
-
 if(completeBtn){
 
     completeBtn.addEventListener(
         "click",
         () => {
 
-            let nextBread = null;
-
-            breads.forEach(bread => {
-
-                if(
-                    bread.remainingSeconds > 0 &&
-                    (
-                        nextBread === null ||
-                        bread.remainingSeconds <
-                        nextBread.remainingSeconds
-                    )
-                ){
-                    nextBread = bread;
-                }
-
-            });
+            const nextBread =
+                getNextBread();
 
             if(!nextBread){
                 return;
             }
 
-            nextBread.currentStep++;
-
-            if(
-                nextBread.currentStep
-                >= workflow.length
-            ){
-                nextBread.currentStep =
-                    workflow.length - 1;
-
-                nextBread.remainingSeconds = 0;
-
-                updateNextTask();
-
-                return;
-            }
-
-            nextBread.remainingSeconds =
-                workflow[
-                    nextBread.currentStep
-                ].duration * 60;
+            advanceBread(nextBread);
 
             updateNextTask();
-
-            alert(
-                nextBread.name +
-                " -> " +
-                workflow[
-                    nextBread.currentStep
-                ].name
-            );
 
         }
     );
