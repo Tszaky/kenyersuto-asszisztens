@@ -235,7 +235,28 @@ function advanceBread(bread){
         ].duration * 60;
 
 }
+function resetBread(bread){
 
+    bread.currentStep = 0;
+
+    bread.remainingSeconds = 0;
+
+    bread.started = false;
+
+    bread.completed = false;
+
+}
+function resetAllBreads(){
+
+    breads.forEach(bread => {
+
+        resetBread(bread);
+
+    });
+
+    saveState();
+
+}
 // ======================
 // KÖVETKEZŐ TEENDŐ PANEL
 // ======================
