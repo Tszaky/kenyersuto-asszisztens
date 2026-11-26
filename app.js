@@ -814,14 +814,14 @@ setInterval(
 // ======================
 // INDULÁS
 // ======================
+loadWorkflowSettings();
+
 loadState();
-
-updateNextTask();
-
-updateOvenPanel(); 
 
 renderWorkflowSettings();
 
+updateNextTask();
+updateOvenPanel();
 refreshCards();
 // ======================
 // START GOMBOK
@@ -894,6 +894,71 @@ document
 
             }
         );
+const saveWorkflowBtn =
+    document.getElementById(
+        "saveWorkflowBtn"
+    );
 
+if(saveWorkflowBtn){
+
+    saveWorkflowBtn.addEventListener(
+        "click",
+        () => {
+
+            document
+                .querySelectorAll(
+                    "#workflowSettings input"
+                )
+                .forEach(input => {
+
+                    const index =
+                        Number(
+                            input.dataset.index
+                        );
+
+                    workflow[index].duration =
+                        Number(
+                            input.value
+                        );
+
+                });
+
+            localStorage.setItem(
+                "workflowSettings",
+                JSON.stringify(workflow)
+            );
+
+            alert(
+                "Workflow mentve."
+            );
+
+        }
+    );
+
+}
+function loadWorkflowSettings(){
+
+    const saved =
+        localStorage.getItem(
+            "workflowSettings"
+        );
+
+    if(!saved){
+        return;
+    }
+
+    const loaded =
+        JSON.parse(saved);
+
+    loaded.forEach(
+        (step,index) => {
+
+            workflow[index].duration =
+                step.duration;
+
+        }
+    );
+
+}        
     });
 
