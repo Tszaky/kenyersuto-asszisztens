@@ -344,6 +344,51 @@ function updateNextTask(){
 
 }
 // ======================
+// SÜTŐ PANEL
+// ======================
+
+function updateOvenPanel(){
+
+    const ovenStatus =
+        document.getElementById(
+            "ovenStatus"
+        );
+
+    const ovenNextTime =
+        document.getElementById(
+            "ovenNextTime"
+        );
+
+    const activeBread =
+        breads.find(
+            bread =>
+                bread.started &&
+                !bread.completed
+        );
+
+    if(!activeBread){
+
+        if(ovenStatus){
+            ovenStatus.textContent =
+                "Szabad";
+        }
+
+        if(ovenNextTime){
+            ovenNextTime.textContent =
+                "-";
+        }
+
+        return;
+
+    }
+
+    if(ovenStatus){
+        ovenStatus.textContent =
+            "Foglalt";
+    }
+
+}
+// ======================
 // KÁRTYÁK FRISSÍTÉSE
 // ======================
 
