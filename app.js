@@ -806,5 +806,33 @@ if(startBtn){
 
 }
 
+document
+    .querySelectorAll(".reset-btn")
+    .forEach(button => {
 
+        button.addEventListener(
+            "click",
+            () => {
+
+                const card =
+                    button.closest(
+                        ".bread-card"
+                    );
+
+                const breadId =
+                    Number(
+                        card.id.replace(
+                            "bread",
+                            ""
+                        )
+                    );
+
+                resetFromBread(
+                    breadId
+                );
+
+            }
+        );
+
+    });
 
