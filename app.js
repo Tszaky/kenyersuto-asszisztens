@@ -665,6 +665,8 @@ if(resetAllBtn){
 
                 updateNextTask();
 
+                updateOvenPanel();
+                
                 refreshCards();
 
             }
@@ -759,6 +761,7 @@ document
 saveState();
 
 updateNextTask();
+updateOvenPanel();                
 refreshCards();
 
             }
