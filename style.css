@@ -141,10 +141,12 @@ body{
 
 .oven-panel{
     font-size:1.8rem;
+    padding:15px;
 }
 
 .oven-panel h2{
     font-size:1.8rem;
+    margin-bottom:15px;
 }
 
 .next-task h1{
@@ -250,7 +252,7 @@ body{
 
     padding: 10px;
 
-    font-size: 1rem;
+    font-size: 2rem;
 
     min-height: 20px;
 
