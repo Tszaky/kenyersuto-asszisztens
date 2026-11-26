@@ -899,7 +899,7 @@ document
 const saveWorkflowBtn =
     document.getElementById(
         "saveWorkflowBtn"
-    );
+    });
 
 if(saveWorkflowBtn){
 
