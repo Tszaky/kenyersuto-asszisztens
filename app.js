@@ -318,198 +318,91 @@ if(!nextBread){
 // KÁRTYÁK FRISSÍTÉSE
 // ======================
 
-function refreshCards(){
+// ======================
+// KÖVETKEZŐ TEENDŐ PANEL
+// ======================
 
-    breads.forEach((bread) => {
+function updateNextTask(){
 
-        const card =
-            document.getElementById(
-                `bread${bread.id}`
-            );
+    const countdown =
+        document.getElementById(
+            "mainCountdown"
+        );
 
-        if(!card){
-            return;
-        }
+    const taskBread =
+        document.querySelector(
+            ".next-bread"
+        );
 
-        const processTitle =
-            card.querySelector(
-                ".process-title"
-            );
+    const taskProcess =
+        document.querySelector(
+            ".next-process"
+        );
 
-        const remainingTime =
-            card.querySelector(
-                ".remaining-time"
-            );
+    let nextBread = null;
 
-        const finishTime =
-            card.querySelector(
-                ".finish-time"
-            );
+    breads.forEach(bread => {
 
-        const progressBar =
-            card.querySelector(
-                ".progress-bar"
-            );
-
-        const workflowContainer =
-            card.querySelector(
-                ".workflow"
-            );
-        const startButton =
-            card.querySelector(
-                ".start-btn"
-            );
-
-        // Folyamat neve
-
-        if(processTitle){
-
-            if(!bread.started){
-
-                processTitle.textContent =
-                    "Még nem indult";
-
-            }
-            else{
-
-                processTitle.textContent =
-                    workflow[
-                        bread.currentStep
-                    ].name;
-
-            }
-
-        }
-
-
-        // Hátralévő idő
-
-        if(remainingTime){
-
-            if(!bread.started){
-
-                remainingTime.textContent = "";
-
-            }
-            else{
-
-                remainingTime.textContent =
-                    "⏳ " +
-                    formatTime(
-                        bread.remainingSeconds
-                    );
-
-            }
-
-        }
-
-
-        // Teljes hátralévő idő
-
-        if(finishTime){
-
-            if(!bread.started){
-
-                finishTime.textContent =
-                    "🏁 --:--";
-
-            }
-            else{
-
-                finishTime.textContent =
-                    "🏁 " +
-                    getTotalRemainingMinutes(
-                        bread
-                    ) +
-                    " perc";
-
-            }
-
-        }
-
-
-        // Progress bar
-
-        if(progressBar){
-
-            progressBar.style.width =
-                getProgress(bread) + "%";
-
-        }
-
-
-        // Workflow lista
-
-        if(workflowContainer){
-
-            workflowContainer.innerHTML = "";
-
-            if(!bread.started){
-
-                workflowContainer.innerHTML =
-                    "<div>⚪ Még nem indult</div>";
-
-            }
-            else{
-
-                workflow.forEach(
-                    (step, stepIndex) => {
-
-                        const item =
-                            document.createElement(
-                                "div"
-                            );
-
-                        if(
-                            stepIndex <
-                            bread.currentStep
-                        ){
-
-                            item.textContent =
-                                "✅ " +
-                                step.name;
-
-                            item.className =
-                                "done";
-
-                        }
-                        else if(
-                            stepIndex ===
-                            bread.currentStep
-                        ){
-
-                            item.textContent =
-                                "⏳ " +
-                                step.name;
-
-                            item.className =
-                                "current";
-
-                        }
-                        else{
-
-                            item.textContent =
-                                "⚪ " +
-                                step.name;
-
-                        }
-
-                        workflowContainer
-                            .appendChild(
-                                item
-                            );
-
-                    }
-                );
-
-            }
-
+        if(
+            bread.remainingSeconds > 0 &&
+            (
+                nextBread === null ||
+                bread.remainingSeconds <
+                nextBread.remainingSeconds
+            )
+        ){
+            nextBread = bread;
         }
 
     });
 
-}
+    if(!nextBread){
 
+        if(countdown){
+            countdown.textContent =
+                "--:--";
+        }
+
+        if(taskBread){
+            taskBread.textContent =
+                "🍞 Nincs aktív kenyér";
+        }
+
+        if(taskProcess){
+            taskProcess.textContent =
+                "Várakozás";
+        }
+
+        return;
+    }
+
+    if(countdown){
+
+        countdown.textContent =
+            formatTime(
+                nextBread.remainingSeconds
+            );
+
+    }
+
+    if(taskBread){
+
+        taskBread.textContent =
+            "🍞 " +
+            nextBread.name;
+
+    }
+
+    if(taskProcess){
+
+        taskProcess.textContent =
+            workflow[
+                nextBread.currentStep
+            ].name;
+
+    }
+
+}
 // ======================
 // VISSZASZÁMLÁLÓ
 // ======================
