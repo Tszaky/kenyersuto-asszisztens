@@ -133,10 +133,15 @@ body{
 .workflow div{
     padding:2px 0;
 }
+#startBtn,
+#completeTaskBtn{
 
-#startBtn{
-    font-size: 2rem;
-    padding: 22px;
+    font-size: 1.5rem;
+
+    padding: 12px;
+
+    font-weight: bold;
+
 }
 
 .oven-panel{
@@ -215,12 +220,6 @@ body{
     padding-left: 15px;
 }
 
-
-#completeTaskBtn,
-
-.countdown{
-    font-size: 2rem;
-}
 
 .next-task h1{
     font-size: 2.4rem;
