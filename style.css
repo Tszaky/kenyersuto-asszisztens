@@ -132,9 +132,9 @@ body{
     padding:2px 0;
 }
 
-.start-btn{
-    font-size:3rem;
-    padding:22px;
+#startBtn{
+    font-size: 3rem;
+    padding: 22px;
 }
 
 .oven-panel{
