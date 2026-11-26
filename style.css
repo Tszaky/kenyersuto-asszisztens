@@ -1,7 +1,7 @@
 
 body{
     background:blue !important;
-    border:10px red !important;
+    border:30px red !important;
 }
 :root{
     --bg:#f3efe6;
