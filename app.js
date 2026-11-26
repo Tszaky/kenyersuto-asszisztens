@@ -275,7 +275,6 @@ function resetFromBread(breadId){
 
     updateOvenPanel();
 
-    renderWorkflowSettings();
 
     refreshCards();
 
@@ -695,8 +694,6 @@ setInterval(() => {
 
     updateOvenPanel();
 
-    renderWorkflowSettings();
-
     refreshCards();
 
 }, 1000);
@@ -729,8 +726,6 @@ if(completeBtn){
 
             updateOvenPanel();
 
-            renderWorkflowSettings();
-
             refreshCards();
 
         }
@@ -759,8 +754,6 @@ if(resetAllBtn){
                 updateNextTask();
 
                 updateOvenPanel();
-
-                renderWorkflowSettings();
                 
                 refreshCards();
 
@@ -866,8 +859,6 @@ if(startBtn){
             updateNextTask();
             
             updateOvenPanel();
-
-            renderWorkflowSettings();
             
             refreshCards();
 
