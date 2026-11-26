@@ -260,3 +260,32 @@ body{
 .task-buttons button{
     flex: 1;
 }
+.reset-btn{
+
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 12px;
+
+    background: #6c757d;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+.reset-btn:hover{
+
+    background: #5a6268;
+
+}
