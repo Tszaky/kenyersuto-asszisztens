@@ -571,7 +571,35 @@ if(completeBtn){
     );
 
 }
+const resetAllBtn =
+    document.getElementById(
+        "resetAllBtn"
+    );
 
+if(resetAllBtn){
+
+    resetAllBtn.addEventListener(
+        "click",
+        () => {
+
+            if(
+                confirm(
+                    "Biztosan törlöd az összes kenyér állapotát?"
+                )
+            ){
+
+                resetAllBreads();
+
+                updateNextTask();
+
+                refreshCards();
+
+            }
+
+        }
+    );
+
+}
 // ======================
 // DIAVETÍTÉS
 // ======================
