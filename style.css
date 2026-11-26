@@ -1,6 +1,6 @@
 
 body{
-    background:blue !important;
+    background:red !important;
     border:30px red !important;
 }
 :root{
@@ -303,5 +303,31 @@ body{
     gap: 12px;
 
     margin-bottom: 10px;
+
+}
+.setting-row input{
+
+    width: 90px;
+
+    padding: 4px;
+
+    text-align: center;
+
+    font-size: 1rem;
+
+}
+#saveWorkflowBtn{
+
+    margin-top: 15px;
+
+    padding: 8px 15px;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    border-radius: 8px;
+
+    cursor: pointer;
 
 }
