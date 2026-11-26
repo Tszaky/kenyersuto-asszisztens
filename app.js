@@ -608,6 +608,8 @@ setInterval(() => {
 
     updateNextTask();
 
+    updateOvenPanel();
+
     refreshCards();
 
 }, 1000);
