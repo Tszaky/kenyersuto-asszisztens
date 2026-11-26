@@ -747,38 +747,43 @@ refreshCards();
 // START GOMBOK
 // ======================
 
-document
-    .querySelectorAll(".start-btn")
-    .forEach(button => {
+const startBtn =
+    document.getElementById(
+        "startBtn"
+    );
 
-        button.addEventListener(
-            "click",
-            () => {
+if(startBtn){
 
-                const bread =
-                    breads.find(
-                        b => !b.started
-                    );
+    startBtn.addEventListener(
+        "click",
+        () => {
 
-                if(!bread){
-                    return;
-                }
+            const bread =
+                breads.find(
+                    b => !b.started
+                );
 
-                bread.started = true;
-
-                bread.currentStep = 0;
-
-                bread.remainingSeconds =
-                    workflow[0].duration * 60;
-
-saveState();
-
-updateNextTask();
-updateOvenPanel();                
-refreshCards();
-
+            if(!bread){
+                return;
             }
-        );
 
-    });
+            bread.started = true;
+
+            bread.currentStep = 0;
+
+            bread.remainingSeconds =
+                workflow[0].duration * 60;
+
+            saveState();
+
+            updateNextTask();
+            updateOvenPanel();
+            refreshCards();
+
+        }
+    );
+
+}
+
+
 
