@@ -133,14 +133,17 @@ body{
 .workflow div{
     padding:2px 0;
 }
-#startBtn,
-#completeTaskBtn{
+.task-buttons button{
 
-    font-size: 1.5rem;
+    flex: 1;
+
+    font-size: 1.3rem;
 
     padding: 12px;
 
     font-weight: bold;
+
+    border-radius: 8px;
 
 }
 
@@ -239,14 +242,7 @@ body{
     object-fit: cover;
     border-radius: 12px;
 }
-.task-buttons button{
-    font-size: 1.4rem;
-    padding: 14px;
-}
 
-.task-buttons button{
-    flex: 1;
-}
 .reset-btn{
 
     width: 100%;
