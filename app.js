@@ -367,9 +367,8 @@ const activeBread =
             !bread.completed &&
 
             (
-                workflow[
-                    bread.currentStep
-                ].name.includes("Sütés")
+                bread.currentStep === 4 ||
+                bread.currentStep === 5
             )
 
     );
