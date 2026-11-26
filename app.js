@@ -280,9 +280,19 @@ function updateNextTask(){
 
     });
 
-    if(!nextBread){
-        return;
-    }
+if(!nextBread){
+
+    taskBread.textContent =
+        "Nincs aktív kenyér";
+
+    taskProcess.textContent =
+        "Várakozás";
+
+    countdown.textContent =
+        "--:--:--";
+
+    return;
+}
 
     const countdown =
         document.getElementById("mainCountdown");
