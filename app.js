@@ -816,6 +816,8 @@ setInterval(
 // ======================
 
 
+loadWorkflowSettings();
+
 loadState();
 
 renderWorkflowSettings();
@@ -959,6 +961,5 @@ function loadWorkflowSettings(){
         }
     );
 
-}        
-    });
+}
 
