@@ -359,12 +359,20 @@ function updateOvenPanel(){
             "ovenNextTime"
         );
 
-    const activeBread =
-        breads.find(
-            bread =>
-                bread.started &&
-                !bread.completed
-        );
+const activeBread =
+    breads.find(
+        bread =>
+
+            bread.started &&
+            !bread.completed &&
+
+            (
+                workflow[
+                    bread.currentStep
+                ].name.includes("Sütés")
+            )
+
+    );
 
     if(!activeBread){
 
