@@ -814,7 +814,7 @@ setInterval(
 // ======================
 // INDULÁS
 // ======================
-loadWorkflowSettings();
+
 
 loadState();
 
