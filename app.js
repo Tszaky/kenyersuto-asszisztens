@@ -260,8 +260,26 @@ function resetAllBreads(){
 // ======================
 // KÖVETKEZŐ TEENDŐ PANEL
 // ======================
+// ======================
+// KÖVETKEZŐ TEENDŐ PANEL
+// ======================
 
 function updateNextTask(){
+
+    const countdown =
+        document.getElementById(
+            "mainCountdown"
+        );
+
+    const taskBread =
+        document.querySelector(
+            ".next-bread"
+        );
+
+    const taskProcess =
+        document.querySelector(
+            ".next-process"
+        );
 
     let nextBread = null;
 
@@ -280,40 +298,55 @@ function updateNextTask(){
 
     });
 
-if(!nextBread){
+    if(!nextBread){
 
-    const countdown =
-        document.getElementById(
-            "mainCountdown"
-        );
+        if(countdown){
+            countdown.textContent =
+                "--:--";
+        }
 
-    const taskBread =
-        document.querySelector(
-            ".next-bread"
-        );
+        if(taskBread){
+            taskBread.textContent =
+                "🍞 Nincs aktív kenyér";
+        }
 
-    const taskProcess =
-        document.querySelector(
-            ".next-process"
-        );
+        if(taskProcess){
+            taskProcess.textContent =
+                "Várakozás";
+        }
+
+        return;
+
+    }
 
     if(countdown){
+
         countdown.textContent =
-            "--:--";
+            formatTime(
+                nextBread.remainingSeconds
+            );
+
     }
 
     if(taskBread){
+
         taskBread.textContent =
-            "🍞 Nincs aktív kenyér";
+            "🍞 " +
+            nextBread.name;
+
     }
 
     if(taskProcess){
+
         taskProcess.textContent =
-            "Várakozás";
+            workflow[
+                nextBread.currentStep
+            ].name;
+
     }
 
-    return;
 }
+
 // ======================
 // KÁRTYÁK FRISSÍTÉSE
 // ======================
