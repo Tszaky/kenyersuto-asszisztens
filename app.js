@@ -275,6 +275,8 @@ function resetFromBread(breadId){
 
     updateOvenPanel();
 
+    renderWorkflowSettings();
+
     refreshCards();
 
 }
@@ -414,6 +416,61 @@ const activeBread =
         ovenStatus.textContent =
             "Foglalt";
     }
+
+}
+// ======================
+// WORKFLOW BEÁLLÍTÁSOK
+// ======================
+
+function renderWorkflowSettings(){
+
+    const container =
+        document.getElementById(
+            "workflowSettings"
+        );
+
+    if(!container){
+        return;
+    }
+
+    container.innerHTML = "";
+
+    workflow.forEach(
+        (step,index) => {
+
+            if(step.duration === 0){
+                return;
+            }
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "setting-row";
+
+            row.innerHTML = `
+
+                <label>
+                    ${step.name}
+                </label>
+
+                <input
+                    type="number"
+                    min="1"
+                    value="${step.duration}"
+                    data-index="${index}"
+                >
+
+            `;
+
+            container.appendChild(
+                row
+            );
+
+        }
+    );
 
 }
 // ======================
@@ -638,6 +695,8 @@ setInterval(() => {
 
     updateOvenPanel();
 
+    renderWorkflowSettings();
+
     refreshCards();
 
 }, 1000);
@@ -670,6 +729,8 @@ if(completeBtn){
 
             updateOvenPanel();
 
+            renderWorkflowSettings();
+
             refreshCards();
 
         }
@@ -698,6 +759,8 @@ if(resetAllBtn){
                 updateNextTask();
 
                 updateOvenPanel();
+
+                renderWorkflowSettings();
                 
                 refreshCards();
 
@@ -763,6 +826,9 @@ loadState();
 updateNextTask();
 
 updateOvenPanel(); 
+
+renderWorkflowSettings();
+
 refreshCards();
 // ======================
 // START GOMBOK
@@ -798,7 +864,11 @@ if(startBtn){
             saveState();
 
             updateNextTask();
+            
             updateOvenPanel();
+
+            renderWorkflowSettings();
+            
             refreshCards();
 
         }
