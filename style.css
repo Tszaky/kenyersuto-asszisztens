@@ -264,23 +264,11 @@ body{
 
     width: 100%;
 
-    margin-top: 10px;
+    padding: 14px;
 
-    padding: 12px;
+    font-size: 1.2rem;
 
-    background: #6c757d;
-
-    color: white;
-
-    border: none;
-
-    border-radius: 8px;
-
-    font-size: 3rem;
-
-    font-weight: 600;
-
-    cursor: pointer;
+    min-height: 50px;
 
 }
 
