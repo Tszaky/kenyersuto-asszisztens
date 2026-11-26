@@ -240,11 +240,9 @@ body{
     object-fit: cover;
     border-radius: 12px;
 }
-.task-buttons{
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
+.task-buttons button{
+    font-size: 1.4rem;
+    padding: 14px;
 }
 
 .task-buttons button{
