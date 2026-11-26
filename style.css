@@ -1,6 +1,6 @@
 
 body{
-    background: blue !important;
+    background: green !important;
     border:30px red !important;
 }
 :root{
@@ -12,7 +12,7 @@ body{
     --primary-dark:#b45309;
 
     --success:#16a34a;
-    --success-light:#dcfce7;
+    --success-light:#dcfce7
 
     --warning:#f59e0b;
     --warning-light:#fef3c7;
