@@ -282,48 +282,37 @@ function updateNextTask(){
 
 if(!nextBread){
 
-    taskBread.textContent =
-        "Nincs aktív kenyér";
-
-    taskProcess.textContent =
-        "Várakozás";
-
-    countdown.textContent =
-        "--:--:--";
-
-    return;
-}
-
     const countdown =
-        document.getElementById("mainCountdown");
-
-    if(countdown){
-
-        countdown.textContent =
-            formatTime(nextBread.remainingSeconds);
-
-    }
+        document.getElementById(
+            "mainCountdown"
+        );
 
     const taskBread =
-        document.querySelector(".next-bread");
+        document.querySelector(
+            ".next-bread"
+        );
 
     const taskProcess =
-        document.querySelector(".next-process");
+        document.querySelector(
+            ".next-process"
+        );
+
+    if(countdown){
+        countdown.textContent =
+            "--:--";
+    }
 
     if(taskBread){
-
         taskBread.textContent =
-            "🍞 " + nextBread.name;
-
+            "🍞 Nincs aktív kenyér";
     }
 
     if(taskProcess){
-
         taskProcess.textContent =
-            workflow[nextBread.currentStep].name;
-
+            "Várakozás";
     }
 
+    return;
 }
 // ======================
 // KÁRTYÁK FRISSÍTÉSE
