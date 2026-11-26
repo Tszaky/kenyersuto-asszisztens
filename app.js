@@ -257,6 +257,27 @@ function resetAllBreads(){
     saveState();
 
 }
+function resetFromBread(breadId){
+
+    breads.forEach(bread => {
+
+        if(bread.id >= breadId){
+
+            resetBread(bread);
+
+        }
+
+    });
+
+    saveState();
+
+    updateNextTask();
+
+    updateOvenPanel();
+
+    refreshCards();
+
+}
 // ======================
 // KÖVETKEZŐ TEENDŐ PANEL
 // ======================
