@@ -261,3 +261,21 @@ body{
     background: #5a6268;
 
 }
+.settings-panel{
+
+    background: var(--card);
+
+    border-radius: 28px;
+
+    box-shadow: var(--shadow);
+
+    margin-top: 20px;
+
+    padding: 20px;
+
+}
+.settings-panel h2{
+
+    margin-bottom: 15px;
+
+}
