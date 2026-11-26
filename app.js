@@ -640,6 +640,8 @@ if(completeBtn){
 
             updateNextTask();
 
+            updateOvenPanel();
+
             refreshCards();
 
         }
@@ -731,6 +733,8 @@ setInterval(
 loadState();
 
 updateNextTask();
+
+updateOvenPanel(); 
 refreshCards();
 // ======================
 // START GOMBOK
